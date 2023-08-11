@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeDA Tech</title>
+</head>
+
+<body>
+    <h1>
+        <center>SOAL TEST 1</center>
+    </h1>
+</body>
+<script>
+    // SIMPLE UNIT TEST
+    function customTest(functionToTest, testConfigs) {
+
+        for (const test of testConfigs) {
+            const actualResult = functionToTest(...test.input);
+            const isPass = JSON.stringify(actualResult) == JSON.stringify(test.expected);
+
+            document.writeln(`
+            <p>
+                <b>
+                    ${test.checkingString} 
+                    - [${isPass ? "PASS" : "FAIL"}]
+                </b>
+                <br>
+                Input :
+                <br>${JSON.stringify(test.input, null, 4)}
+                <br>Expected Result :
+                <br>${JSON.stringify(test.expected, null, 4)}
+                <br>Actual Result :
+                <br>${JSON.stringify(actualResult, null, 4)}
+            </p>`
+            );
+        }
+    }
+</script>
+<script>
+    // Q1:
+    // Buatlah fungsi dengan input array of number untuk mengurutkan angka 
+    // dari terbesar ke terkecil dengan manual tanpa fungsi bawaan javascript
+    // Input : [1, 2, 4, 3, 5, 3, 2, 1]			
+    // Expected Output : [5, 4, 3, 3, 2, 2, 1, 1]
+
+    document.writeln("<h2>Q1</h2><hr>");
+
+    function Q1ManualSort(arrToSort = []) {
+
+        if (arrToSort.length < 2) {
+            return arrToSort;
+        }
+
+        let sortArr = arrToSort;
+
+        for (let i = 0; i < sortArr.length; i++) {
+            for (let j = 0; j < sortArr.length - 1; j++) {
+                if (sortArr[j] < sortArr[j + 1]) {
+                    [sortArr[j], sortArr[j + 1]] = [sortArr[j + 1], sortArr[j]]
+                }
+            }
+        }
+
+        return sortArr;
+    }
+
+    // TEST
+    customTest(Q1ManualSort, [
+        {
+            checkingString: "base check",
+            input: [
+                [1, 2, 4, 3, 5, 3, 2, 1]
+            ],
+            expected: [5, 4, 3, 3, 2, 2, 1, 1],
+        },
+        {
+            checkingString: "short length array",
+            input: [
+                [1, 2]
+            ],
+            expected: [2, 1],
+        },
+        {
+            checkingString: "single value array",
+            input: [
+                [1]
+            ],
+            expected: [1],
+        },
+    ]);
+</script>
+
+<script>
+    // Q2:
+    // Buatlah fungsi dengan input array of number dan number 
+    // untuk menemukan jumlah maksimum subarray dengan panjang angka yang dimasukan ke fungsi
+    // Input : ([100, 200, 300, 400], 2)				Expected Output : 700 		// didapatkan dari 300 + 400
+    // Input : ([1, 4, 2, 10, 23, 3, 1, 0, 20], 4)		Expected Output : 39 		// didapatkan dari 4 + 2 + 10 + 23
+    // Input : ([-3, 4, 0, -2, 6, -1], 2)				Expected Output : 5 		// didapatkan dari 6 + -1
+
+    document.writeln("<h2>Q2</h2><hr>");
+
+    function Q2MaxSum(arr, num) {
+
+        if (num > arr.length) {
+            return null;
+        }
+
+        let sumContainer = [];
+
+        for (let loop = 0; loop < arr.length; loop++) {
+            let tempSum = 0;
+            for (const number of arr.slice(loop, loop + num)) {
+                tempSum += number;
+            }
+
+            sumContainer.push(tempSum);
+        }
+
+        // document.write(`${sumContainer.join(',')}<br>`);
+        // document.write(`<b>${Math.max(...sumContainer)}</b>`);
+        // document.writeln("<hr>");
+
+        return Math.max(...sumContainer);
+    }
+
+    customTest(Q2MaxSum, [
+        {
+            checkingString: "Check 1",
+            input: [
+                [100, 200, 300, 400],
+                2
+            ],
+            expected: 700,
+        },
+        {
+            checkingString: "Check 2",
+            input: [
+                [1, 4, 2, 10, 23, 3, 1, 0, 20],
+                4
+            ],
+            expected: 39,
+        },
+        {
+            checkingString: "Check 3",
+            input: [
+                [-3, 4, 0, -2, 6, -1],
+                2
+            ],
+            expected: 5,
+        },
+    ]);
+</script>
+
+<script>
+    // Q3: Buatlah fungsi untuk mendapatkan jumlah semua bilangan 
+    // genap dalam nested objek
+    // Input :
+    // {
+    // outer: 2,
+    // obj: {
+    //     inner: 2,
+    //     otherObj: {
+    //     superInner: 2,
+    //     notANumber: true,
+    //     alsoNotANumber: "yup"
+    //     }
+    // }
+    // }
+    // Output: 6
+
+    document.writeln("<h3>Q3</h3><hr>");
+    function Q3SumEvenValueOnObject(obj) {
+        let sum = 0;
+
+        for (const key in obj) {
+            if (typeof obj[key] === "object") {
+                sum += Q3SumEvenValueOnObject(obj[key]);
+            } else if (typeof obj[key] === "number" && (obj[key] % 2) === 0) {
+                sum += obj[key];
+            }
+        }
+
+        return sum;
+    }
+
+    let testobj = {
+        outer: 2,
+        obj: {
+            inner: 4,
+            otherObj: {
+                superInner: 2,
+                notANumber: true,
+                alsoNotANumber: "yup"
+            }
+        }
+    }
+
+    // TEST
+    customTest(Q3SumEvenValueOnObject, [
+        {
+            checkingString: "base check",
+            input: [
+                {
+                    outer: 2,
+                    obj: {
+                        inner: 2,
+                        otherObj: {
+                            superInner: 2,
+                            notANumber: true,
+                            alsoNotANumber: "yup"
+                        }
+                    }
+                }
+            ],
+            expected: 6,
+        },
+        {
+            checkingString: "multi object",
+            input: [
+                {
+                    obj: {
+                        inner: 2,
+                        otherObj: {
+                            superInner: 2,
+                            notANumber: true,
+                            alsoNotANumber: "yup"
+                        },
+                        inner: 4,
+                    },
+                    outer: 2,
+                    otherObj: {
+                        superInner: 2,
+                        notANumber: true,
+                        alsoNotANumber: "yup"
+                    },
+                }
+            ],
+            expected: 10,
+        },
+        {
+            checkingString: "multi object with odd values",
+            input: [
+                {
+                    obj: {
+                        inner: 1,
+                        otherObj: {
+                            superInner: 2,
+                            notANumber: true,
+                            alsoNotANumber: "yup"
+                        },
+                        inner: 4,
+                    },
+                    outer: 1,
+                    otherObj: {
+                        superInner: 2,
+                        notANumber: true,
+                        alsoNotANumber: "yup"
+                    },
+                }
+            ],
+            expected: 8,
+        },
+    ]);
+</script>
+
+</html>
