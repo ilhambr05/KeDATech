@@ -4,6 +4,8 @@ import HeroBg from '../assets/hero-bg.png'
 import HeroImage from '../assets/hero.svg'
 import AboutUsImage from '../assets/about-us.svg'
 
+import { listPricing } from "../data/config";
+
 function HomePage() {
     const heroBgStyle = {
         backgroundImage: `url(${HeroBg})`,
@@ -60,84 +62,48 @@ function HomePage() {
                                 <p className="fs-5 text-muted">Sunt id aliqua do aliqua consectetur labore ipsum.</p>
                             </div>
                             <Row className="flex-md-row-reverse">
-                                <Col md={4}>
-                                    <Card border="primary" className="mb-3">
-                                        <Card.Header className="bg-primary text-white py-3">
-                                            <h4 className="my-0 fw-normal text-center">Entrepreneur</h4>
-                                        </Card.Header>
-                                        <Card.Body className="text-center">
-                                            <h1 className="card-title pricing-card-title">$29<small className="text-muted fw-light">/mo</small></h1>
-                                            <ul className="list-unstyled mt-3 mb-4">
-                                                <li>Mencatat barang masuk</li>
-                                                <li>Mencatat barang keluar</li>
-                                                <li>Mencatat keuntungan</li>
-                                                <li>Chart penjualan</li>
-                                                <li>Support 7x24 Jam</li>
-                                                <li>Export data ke Excel</li>
-                                                <li>AI Prediksi penghasilan</li>
-                                            </ul>
-                                            <Button variant="primary" size="lg" className="w-100">Contact us</Button>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                                <Col md={4}>
-                                    <Card className="mb-3">
-                                        <Card.Header className="py-3">
-                                            <h4 className="my-0 fw-normal text-center">Bussiness</h4>
-                                        </Card.Header>
-                                        <Card.Body className="text-center">
-                                            <h1 className="card-title pricing-card-title">$15<small className="text-muted fw-light">/mo</small></h1>
-                                            <ul className="list-unstyled mt-3 mb-4">
-                                                <li>Mencatat barang masuk</li>
-                                                <li>Mencatat barang keluar</li>
-                                                <li>Mencatat keuntungan</li>
-                                                <li>Chart penjualan</li>
-                                                <li>Support 7x24 Jam</li>
-                                                <li className="text-muted">
-                                                    <span className="product-feature-disabled text-danger">Export data ke Excel</span>
-                                                </li>
-                                                <li className="text-muted">
-                                                    <span className="product-feature-disabled text-danger">AI Prediksi penghasilan</span>
-                                                </li>
-                                            </ul>
-                                            <Button variant="primary" size="lg" className="w-100">Get started</Button>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                                <Col md={4}>
-                                    <Card className="mb-3">
-                                        <Card.Header className="py-3">
-                                            <h4 className="my-0 fw-normal text-center">Basic</h4>
-                                        </Card.Header>
-                                        <Card.Body className="text-center">
-                                            <h1 className="card-title pricing-card-title">$0<small className="text-muted fw-light">/mo</small></h1>
-                                            <ul className="list-unstyled mt-3 mb-4">
-                                                <li>Mencatat barang masuk</li>
-                                                <li>Mencatat barang keluar</li>
-                                                <li>Mencatat keuntungan</li>
-                                                <li className="text-muted">
-                                                    <span className="product-feature-disabled text-danger">Chart penjualan</span>
-                                                </li>
-                                                <li className="text-muted">
-                                                    <span className="product-feature-disabled text-danger">Support 7x24 Jam</span>
-                                                </li>
-                                                <li className="text-muted">
-                                                    <span className="product-feature-disabled text-danger">Export data ke Excel</span>
-                                                </li>
-                                                <li className="text-muted">
-                                                    <span className="product-feature-disabled text-danger">AI Prediksi penghasilan</span>
-                                                </li>
-                                            </ul>
-                                            <Button variant="outline-secondary" size="lg" className="w-100">Sign up for free</Button>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
+                                {listPricing.map(
+                                    (pricing) => {
+                                        return (
+                                            <Col md={4} key={pricing.id}>
+                                                <Card border={pricing.borderType} className="mb-3">
+                                                    <Card.Header className={`${pricing.headerAdditionalClass} py-3`}>
+                                                        <h4 className="my-0 fw-normal text-center">{pricing.tierName}</h4>
+                                                    </Card.Header>
+                                                    <Card.Body className="text-center">
+                                                        <h1 className="card-title pricing-card-title">
+                                                            {pricing.price}
+                                                            <small className="text-muted fw-light">/mo</small>
+                                                        </h1>
+                                                        <ul className="list-unstyled mt-3 mb-4">
+                                                            {pricing.features.map(
+                                                                (feature) => {
+                                                                    return (
+                                                                        <li
+                                                                            className={feature.included ? "" : "product-feature-disabled text-danger"}
+                                                                            key={`${pricing.id}-${feature.id}`}
+                                                                        >
+                                                                            {feature.name}
+                                                                        </li>
+                                                                    );
+                                                                }
+                                                            )}
+                                                        </ul>
+                                                        <Button variant={pricing.orderBtnVariant} size="lg" className="w-100">
+                                                            {pricing.orderBtnText}
+                                                        </Button>
+                                                    </Card.Body>
+                                                </Card>
+                                            </Col>
+                                        );
+                                    }
+                                )}
                             </Row>
                             <br />
                         </Col>
                     </Row>
                 </Container>
-            </div>
+            </div >
             <div id="contact" className="min-vh-100  d-flex align-items-center px-5 bg-dark text-white">
                 <Container className="container-md">
                     <Row className="g-5 py-5">
