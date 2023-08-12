@@ -5,10 +5,12 @@ import { NavLink } from "react-router-dom"
 // import { NavLink } from "react-router-dom"
 
 import brandLogo from '../assets/brand-logo.png'
+import ModalLogin from "./ModalLogin"
 
 const NavbarComponents = () => {
     const [navClass, setNavClass] = useState('');
     const [navLinkSize, setNavLinkSize] = useState('fs-2');
+    const [showModalLogin, setShowModalLogin] = useState(false);
 
     const navScrolled = () => {
         if (window.scrollY > 15) {
@@ -26,8 +28,16 @@ const NavbarComponents = () => {
         window.addEventListener('scroll', navScrolled);
     })
 
+    const handleModalLoginClose = () => setShowModalLogin(false);
+    const handleModalLoginShow = () => setShowModalLogin(true);
+
     return (
         <Navbar collapseOnSelect expand="lg" fixed="top" className={navClass}>
+            <ModalLogin
+                isShown={showModalLogin}
+                handleClose={handleModalLoginClose}
+            >
+            </ModalLogin>
             <Container>
                 <NavLink to={'/'} className={`${navClass ? 'text-dark' : 'text-white'} fs-2 fw-bold navbar-brand`}>
                     <img
@@ -54,7 +64,7 @@ const NavbarComponents = () => {
                         )} */}
                     </Nav>
                     <div className="text-center">
-                        <Button variant="outline-info" className="login-btn">Login</Button>
+                        <Button variant="outline-info" className="login-btn" onClick={handleModalLoginShow}>Login</Button>
                     </div>
                 </Navbar.Collapse>
             </Container>

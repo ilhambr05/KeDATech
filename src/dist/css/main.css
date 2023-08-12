@@ -31,6 +31,14 @@
     min-width: 150px;
 }
 
+.mw-400px {
+    max-width: 400px;
+}
+
+.container-md {
+    max-width: 960px;
+}
+
 .hero-content {
     height: 30rem;
 }
@@ -44,4 +52,8 @@
     bottom: 3rem;
     /* left: 5rem; */
     height: 15rem;
+}
+
+.product-feature-disabled {
+    text-decoration: line-through;
 }

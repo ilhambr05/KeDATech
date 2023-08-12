@@ -8,12 +8,12 @@ import LoginPage from "./pages/LoginPage"
 
 function App() {
 	return <>
-		<NavbarComponents></NavbarComponents>
+		<NavbarComponents />
 		<Routes>
 			<Route path="/" Component={HomePage} />
 			<Route path="/login" Component={LoginPage} />
 		</Routes>
-		<FooterComponent></FooterComponent>
+		<FooterComponent />
 	</>
 }
 
