@@ -18,19 +18,19 @@ function HomePage() {
             <header id="home" className="min-vh-100" style={heroBgStyle}>
                 <Container className="hero-content pt-5 d-flex align-items-center">
                     <Container className="mt-5">
-                        <Row>
+                        <Row className="animate__animated animate__fadeInUp">
                             <Col md={{ span: 6, offset: 4 }} className="hero-caption text-center">
                                 Lorem ipsum dolor Sit amet. consectetur adjprscing elJt. sed
                                 do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                             </Col>
                         </Row>
-                        <Row>
+                        <Row className="animate__animated animate__fadeInUp">
                             <Col>
                                 <p className="fs-4"><i>&quot;Excepteur sint occaecat cupidatat non proident&quot;</i></p>
                             </Col>
                         </Row>
                     </Container>
-                    <img className="hero-image" src={HeroImage} alt="Hero Image" />
+                    <img className="hero-image animate__animated animate__fadeInUp" src={HeroImage} alt="Hero Image" />
                 </Container>
             </header>
             <div id="about" className="min-vh-100 bg-dark text-white d-flex align-items-center px-5">
