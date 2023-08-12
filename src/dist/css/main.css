@@ -49,3 +49,7 @@
     /* left: 5rem; */
     height: 15rem;
 }
+
+.product-feature-disabled {
+    text-decoration: line-through;
+}

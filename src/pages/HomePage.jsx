@@ -1,4 +1,4 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
 
 import HeroBg from '../assets/hero-bg.png'
 import HeroImage from '../assets/hero.svg'
@@ -51,7 +51,92 @@ function HomePage() {
                     </Row>
                 </Container>
             </div>
-            <div id="pricing" className="min-vh-100">
+            <div id="pricing" className="min-vh-100 d-flex align-items-center px-5">
+                <Container className="container-md">
+                    <Row className="g-5 py-5">
+                        <Col>
+                            <div className="text-center pb-md-4">
+                                <h1 className="fw-bold">PRICING</h1>
+                                <p className="fs-5 text-muted">Sunt id aliqua do aliqua consectetur labore ipsum.</p>
+                            </div>
+                            <Row className="flex-md-row-reverse">
+                                <Col md={4}>
+                                    <Card border="primary" className="mb-3">
+                                        <Card.Header className="bg-primary text-white py-3">
+                                            <h4 className="my-0 fw-normal text-center">Entrepreneur</h4>
+                                        </Card.Header>
+                                        <Card.Body className="text-center">
+                                            <h1 className="card-title pricing-card-title">$29<small className="text-muted fw-light">/mo</small></h1>
+                                            <ul className="list-unstyled mt-3 mb-4">
+                                                <li>Mencatat barang masuk</li>
+                                                <li>Mencatat barang keluar</li>
+                                                <li>Mencatat keuntungan</li>
+                                                <li>Chart penjualan</li>
+                                                <li>Support 7x24 Jam</li>
+                                                <li>Export data ke Excel</li>
+                                                <li>AI Prediksi penghasilan</li>
+                                            </ul>
+                                            <Button variant="primary" size="lg" className="w-100">Contact us</Button>
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                                <Col md={4}>
+                                    <Card className="mb-3">
+                                        <Card.Header className="py-3">
+                                            <h4 className="my-0 fw-normal text-center">Bussiness</h4>
+                                        </Card.Header>
+                                        <Card.Body className="text-center">
+                                            <h1 className="card-title pricing-card-title">$15<small className="text-muted fw-light">/mo</small></h1>
+                                            <ul className="list-unstyled mt-3 mb-4">
+                                                <li>Mencatat barang masuk</li>
+                                                <li>Mencatat barang keluar</li>
+                                                <li>Mencatat keuntungan</li>
+                                                <li>Chart penjualan</li>
+                                                <li>Support 7x24 Jam</li>
+                                                <li className="text-muted">
+                                                    <span className="product-feature-disabled text-danger">Export data ke Excel</span>
+                                                </li>
+                                                <li className="text-muted">
+                                                    <span className="product-feature-disabled text-danger">AI Prediksi penghasilan</span>
+                                                </li>
+                                            </ul>
+                                            <Button variant="primary" size="lg" className="w-100">Get started</Button>
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                                <Col md={4}>
+                                    <Card className="mb-3">
+                                        <Card.Header className="py-3">
+                                            <h4 className="my-0 fw-normal text-center">Basic</h4>
+                                        </Card.Header>
+                                        <Card.Body className="text-center">
+                                            <h1 className="card-title pricing-card-title">$0<small className="text-muted fw-light">/mo</small></h1>
+                                            <ul className="list-unstyled mt-3 mb-4">
+                                                <li>Mencatat barang masuk</li>
+                                                <li>Mencatat barang keluar</li>
+                                                <li>Mencatat keuntungan</li>
+                                                <li className="text-muted">
+                                                    <span className="product-feature-disabled text-danger">Chart penjualan</span>
+                                                </li>
+                                                <li className="text-muted">
+                                                    <span className="product-feature-disabled text-danger">Support 7x24 Jam</span>
+                                                </li>
+                                                <li className="text-muted">
+                                                    <span className="product-feature-disabled text-danger">Export data ke Excel</span>
+                                                </li>
+                                                <li className="text-muted">
+                                                    <span className="product-feature-disabled text-danger">AI Prediksi penghasilan</span>
+                                                </li>
+                                            </ul>
+                                            <Button variant="outline-secondary" size="lg" className="w-100">Sign up for free</Button>
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                            </Row>
+                            <br />
+                        </Col>
+                    </Row>
+                </Container>
             </div>
             <div id="contact" className="min-vh-100 bg-dark">
             </div>
