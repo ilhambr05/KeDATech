@@ -1,4 +1,4 @@
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 
 import HeroBg from '../assets/hero-bg.png'
 import HeroImage from '../assets/hero.svg'
@@ -138,7 +138,43 @@ function HomePage() {
                     </Row>
                 </Container>
             </div>
-            <div id="contact" className="min-vh-100 bg-dark">
+            <div id="contact" className="min-vh-100  d-flex align-items-center px-5 bg-dark text-white">
+                <Container className="container-md">
+                    <Row className="g-5 py-5">
+                        <Col>
+                            <div className="text-center pb-md-4">
+                                <h1 className="fw-bold">Contact Us</h1>
+                                <p className="fs-5">Aliqua eu deserunt aute velit esse veniam velit.</p>
+                            </div>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Form>
+                                <Row>
+                                    <Col md={6}>
+                                        <Form.Group className="mb-3" controlId="contactForm.name">
+                                            <Form.Label>Name</Form.Label>
+                                            <Form.Control type="text" placeholder="Your name" />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col md={6}>
+                                        <Form.Group className="mb-3" controlId="contactForm.email">
+                                            <Form.Label>Email address</Form.Label>
+                                            <Form.Control type="email" placeholder="Your email" />
+                                        </Form.Group>
+                                    </Col>
+                                </Row>
+                                <Col>
+                                    <Form.Group className="mb-3" controlId="contactForm.message">
+                                        <Form.Label>Message</Form.Label>
+                                        <Form.Control as="textarea" rows={4} />
+                                    </Form.Group>
+                                </Col>
+                            </Form>
+                        </Col>
+                    </Row>
+                </Container>
             </div>
         </>
     )
