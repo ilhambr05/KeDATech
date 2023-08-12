@@ -4,10 +4,23 @@
 
 :root {
     --navbar-color: #ffffff;
+    --navbar-color-border: #D7F3FB;
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand {
+    transition: all 0.5s ease;
 }
 
 .navbar-collapse.collapse.show {
     background: var(--navbar-color);
+}
+
+.scrolled-navbar {
+    background-color: var(--navbar-color);
+    box-shadow: 1px 1px 1px 1px rgba(215, 243, 251, 1);
+    -webkit-box-shadow: 1px 1px 1px 1px rgba(215, 243, 251, 1);
+    -moz-box-shadow: 1px 1px 1px 1px rgba(215, 243, 251, 1);
 }
 
 .brand-logo {

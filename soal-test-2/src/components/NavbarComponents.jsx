@@ -1,27 +1,57 @@
+import { useEffect, useState } from "react"
 import { Button, Container, Nav, Navbar } from "react-bootstrap"
 import { NavLink } from "react-router-dom"
+// import { listLink } from "../data/configs/navbar.js"
+// import { NavLink } from "react-router-dom"
 
 import brandLogo from '../assets/brand-logo.png'
 
-function NavbarComponents() {
+const NavbarComponents = () => {
+    const [navClass, setNavClass] = useState('');
+    const [navLinkSize, setNavLinkSize] = useState('fs-2');
+
+    const navScrolled = () => {
+        if (window.scrollY > 15) {
+            setNavClass('scrolled-navbar');
+            setNavLinkSize('fs-5');
+        } else {
+            setNavClass('');
+            setNavLinkSize('fs-2');
+        }
+    }
+
+    useEffect(() => {
+        navScrolled();
+
+        window.addEventListener('scroll', navScrolled);
+    })
+
     return (
-        <Navbar expand="lg" fixed="top">
+        <Navbar collapseOnSelect expand="lg" fixed="top" className={navClass}>
             <Container>
-                <NavLink to={'/'} className="fs-2 fw-bold navbar-brand">
+                <NavLink to={'/'} className={`${navClass ? 'text-dark' : 'text-white'} fs-2 fw-bold navbar-brand`}>
                     <img
                         alt="brand logo"
                         src={brandLogo}
                         className="brand-logo d-inline-block align-top"
                     />{' '}
-                    HOME
+                    Home
                 </NavLink>
-                {/* <Navbar.Brand href="#home">HOME</Navbar.Brand> */}
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="ms-auto text-center">
-                        <Nav.Link href="#about" className="fs-2 fw-bold px-3">ABOUT</Nav.Link>
-                        <Nav.Link href="#pricing" className="fs-2 fw-bold px-3">PRICING</Nav.Link>
-                        <Nav.Link href="#contact" className="fs-2 fw-bold px-3">CONTACT</Nav.Link>
+                    <Nav className="ms-auto me-md-3 text-center">
+                        <Nav.Link href="#about" className={`${navLinkSize} fw-bold px-3`}>About</Nav.Link>
+                        <Nav.Link href="#pricing" className={`${navLinkSize} fw-bold px-3`}>Pricing</Nav.Link>
+                        <Nav.Link href="#contact" className={`${navLinkSize} fw-bold px-3`}>Contact</Nav.Link>
+                        {/* {listLink.map(
+                            (link) => {
+                                return (
+                                    <div key={link.id}>
+                                        <NavLink to={link.path} className="nav-link">{link.text}</NavLink>
+                                    </div>
+                                )
+                            }
+                        )} */}
                     </Nav>
                     <div className="text-center">
                         <Button variant="outline-info" className="login-btn">Login</Button>
