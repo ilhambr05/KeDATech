@@ -1,0 +1,19 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --navbar-color: #ffffff;
+}
+
+.navbar-collapse.collapse.show {
+    background: var(--navbar-color);
+}
+
+.brand-logo {
+    height: 2.7rem;
+}
+
+.login-btn {
+    min-width: 150px;
+}
