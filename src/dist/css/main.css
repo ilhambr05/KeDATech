@@ -30,3 +30,18 @@
 .login-btn {
     min-width: 150px;
 }
+
+.hero-content {
+    height: 30rem;
+}
+
+.hero-content .hero-caption {
+    margin-bottom: 7rem;
+}
+
+.hero-image {
+    position: absolute;
+    bottom: 3rem;
+    /* left: 5rem; */
+    height: 15rem;
+}
