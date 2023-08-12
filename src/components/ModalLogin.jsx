@@ -4,7 +4,7 @@ import { Button, Modal, Form, FloatingLabel } from 'react-bootstrap';
 function ModalLogin({ isShown, handleClose }) {
     return (
         <>
-            <Modal centered="true" dialogClassName="w-400px" show={isShown} onHide={handleClose}>
+            <Modal centered="true" dialogClassName="mw-400px" show={isShown} onHide={handleClose}>
                 <Modal.Body className='p-5'>
                     <h1 className="h3 mb-5 fw-normal text-center">
                         Login
