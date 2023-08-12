@@ -1,6 +1,6 @@
 export const listPricing = [
   {
-    id: "pricingEntrepreneur",
+    id: 1,
     tierName: "Entrepreneur",
     borderType: "primary",
     headerAdditionalClass: "bg-primary text-white",
@@ -46,7 +46,7 @@ export const listPricing = [
     orderBtnText: "Contact us",
   },
   {
-    id: "pricingBusiness",
+    id: 2,
     tierName: "Business",
     borderType: "",
     headerAdditionalClass: "",
@@ -92,7 +92,7 @@ export const listPricing = [
     orderBtnText: "Get Started",
   },
   {
-    id: "pricingEnterpreneur",
+    id: 3,
     tierName: "Entrepreneur",
     borderType: "",
     headerAdditionalClass: "",

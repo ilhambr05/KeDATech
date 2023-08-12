@@ -36,10 +36,10 @@ function HomePage() {
             <div id="about" className="min-vh-100 bg-dark text-white d-flex align-items-center px-5">
                 <Container className="container-md">
                     <Row className="flex-md-row-reverse align-items-center g-5 py-5">
-                        <Col md={6}>
+                        <Col md={6} data-aos="fade-up" data-aos-duration="800">
                             <img className="w-100" src={AboutUsImage} alt="Hero Image" />
                         </Col>
-                        <Col md={6}>
+                        <Col md={6} data-aos="fade-up" data-aos-duration="800">
                             <h1 className="fw-bold">ABOUT US</h1>
                             <p>
                                 Officia pariatur non magna incididunt ex ut.
@@ -57,7 +57,7 @@ function HomePage() {
                 <Container className="container-md">
                     <Row className="g-5 py-5">
                         <Col>
-                            <div className="text-center pb-md-4">
+                            <div className="text-center pb-md-4" data-aos="fade-up" data-aos-duration="800">
                                 <h1 className="fw-bold">PRICING</h1>
                                 <p className="fs-5 text-muted">Sunt id aliqua do aliqua consectetur labore ipsum.</p>
                             </div>
@@ -65,7 +65,7 @@ function HomePage() {
                                 {listPricing.map(
                                     (pricing) => {
                                         return (
-                                            <Col md={4} key={pricing.id}>
+                                            <Col md={4} key={`pricing-item-${pricing.id}`} data-aos="fade-up" data-aos-duration="800" data-aos-delay={pricing.id * 200}>
                                                 <Card border={pricing.borderType} className="mb-3">
                                                     <Card.Header className={`${pricing.headerAdditionalClass} py-3`}>
                                                         <h4 className="my-0 fw-normal text-center">{pricing.tierName}</h4>
